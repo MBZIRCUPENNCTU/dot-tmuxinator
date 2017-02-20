@@ -1,0 +1,45 @@
+# ~/.tmuxinator/simulation.yml
+
+name: simulation
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: export UAV_NAME=uav1; clear
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: simulation
+
+# Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t simulation
+
+windows:
+  - gazebo:
+      layout: even-vertical
+      panes:
+        - roslaunch mbzirc_main grasping_gazebo.launch gui:=false
+  - pixhawk:
+      layout: even-vertical
+      panes:
+        - sleep 4; spawn 11 --run --delete --enable-rangefinder --enable-ground-truth --enable-mobius --enable-bluefox --enable-gripper
+  - tmux:
+      layout: even-vertical
+      panes:
+        - cd ~/scripts/; sleep 11; ./uav11.sh
