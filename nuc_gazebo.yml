@@ -34,11 +34,11 @@ windows:
   - display:
       layout: even-vertical
       panes:
-        - Xvfb :1 -screen 0 1024x780x24+32 -fbdir /var/tmp
+        - Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile /tmp/10.log -config /usr/share/X11/xorg.conf.d/xorg.conf :99
   - gazebo:
       layout: even-vertical
       panes:
-        - export DISPLAY=:1; sleep 2; roslaunch mbzirc_main grasping_gazebo.launch gui:=true
+        - export DISPLAY=:99; sleep 2; roslaunch mbzirc_main grasping_gazebo.launch gui:=false
   - object_movement:
       layout: even-vertical
       panes:
