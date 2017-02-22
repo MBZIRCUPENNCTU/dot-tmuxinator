@@ -34,12 +34,12 @@ windows:
   - gazebo:
       layout: even-vertical
       panes:
-        - export DISPLAY=:0; roslaunch mbzirc_main grasping_gazebo.launch gui:=true
+        - export DISPLAY=:0; roslaunch mbzirc_main grasping_gazebo.launch gui:=false
   - object_movement:
       layout: even-vertical
       panes:
         - sleep 6; roslaunch object_movement test.launch
-  - collision_checker:
+  - mbzirc_testing:
       layout: even-vertical
       panes:
-        - sleep 6; roslaunch mbzirc_testing collision_checker.launch
+        - sleep 8; roslaunch mbzirc_testing collision_checker.launch 

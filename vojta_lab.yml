@@ -42,4 +42,3 @@ windows:
         - cd ~/scripts/; sleep 3; ./uav2.sh
           #- cd ~/scripts/; sleep 3; ./uav3.sh
           # - cd ~/scripts/; sleep 5; ./uav3.sh
-

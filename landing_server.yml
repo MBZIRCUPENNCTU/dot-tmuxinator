@@ -34,7 +34,7 @@ windows:
   - gazebo:
       layout: even-vertical
       panes:
-        - roslaunch mbzirc_main landing_gazebo.launch gui:=false
+        - export DISPLAY=:0; roslaunch mbzirc_main landing_gazebo.launch gui:=true
   - pixhawk:
       layout: even-vertical
       panes:
@@ -49,7 +49,7 @@ windows:
         - sleep 7; rostopic echo /$UAV_NAME/mbzirc_odom/slow_odom
         - history -s 'rosservice call /uav11/mbzirc_odom/toggle_cross_altitude 1'
         - sleep 7; rostopic echo /$UAV_NAME/cross_detector/altitude
-        - sleep 7; roslaunch cross_detector simulation.launch
+        - sleep 7; roslaunch cross_detector simulation.launch > /dev/null
   - tmux:
       layout: even-vertical
       panes:
