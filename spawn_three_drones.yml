@@ -34,7 +34,7 @@ windows:
   - pixhawk:
       layout: even-vertical
       panes:
-        - spawn 1 2 3 --run --delete --enable-rangefinder --enable-mobius --enable-gripper --enable-ground-truth
+        - spawn 1 2 3 --run --delete --enable-rangefinder --enable-mobius-camera-down --enable-gripper --enable-ground-truth
   - tmux:
       layout: even-vertical
       panes:
